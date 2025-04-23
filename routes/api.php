@@ -15,3 +15,4 @@ Route::prefix('auth')->group(function() {
 });
 
 Route::apiResource('ads', AdController::class)->middleware('auth:sanctum');
+Route::get('my', [AdController::class, 'indexMy'])->middleware('auth:sanctum');

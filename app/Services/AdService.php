@@ -23,9 +23,14 @@ class AdService
             ->get();
     }
 
+    public function getUserId():int
+    {
+        return auth('sanctum')->user()->id;
+    }
+
     public function create(array $data): ?Ad
     {
-        $data['author_id'] = auth('sanctum')->user()->id;
+        $data['author_id'] = $this->getUserId();
 
         /** @var Ad $ad */
         $ad = Ad::query()->create($data);
